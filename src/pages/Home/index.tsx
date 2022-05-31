@@ -4,9 +4,9 @@ import ReactPaginate from "react-paginate";
 import { PokemonCard } from "../../components/PokemonCard";
 import Menubar from "../../components/Menubar";
 import { useListPokemons } from "../../hooks/useListPokemons";
+import Logo from "../../assets/svgs/Logo";
 
 import * as S from "./styles";
-import Logo from "../../assets/svgs/Logo";
 
 export default function Home() {
   const [page, setPage] = useState(0);

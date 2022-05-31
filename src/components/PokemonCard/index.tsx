@@ -1,40 +1,17 @@
+import { PokemonDto } from "../../api/pokemons/types";
 import * as S from "./styles";
 
 export type PokemonCardProps = {
-  pokemon: {
-    id: number;
-    name: string;
-    abilities: {
-      ability: {
-        name: string;
-        url: string;
-      };
-    }[];
-    specieDetails: {
-      color: {
-        name: string;
-      };
-    };
-    sprites: {
-      other: { dream_world: { front_default: string } };
-    };
-  };
+  pokemon: PokemonDto;
 };
-
-function pad(id: string | number | undefined, length: number) {
-  let str = id ?? "";
-  while (String(str).length < length) {
-    str = "0" + str;
-  }
-  return str;
-}
 
 export function PokemonCard({ pokemon }: PokemonCardProps) {
   const color = pokemon.specieDetails.color.name;
+
   return (
-    <S.Wrapper color={color}>
+    <S.Wrapper to={`/pokemon/${pokemon.id}`} color={color}>
       <S.Header>
-        <S.PokemonId>#{pad(pokemon.id, 3)}</S.PokemonId>
+        <S.PokemonId>#{pokemon?.id?.toString().padStart(3, "0")}</S.PokemonId>
       </S.Header>
 
       <S.Name color={color}>{pokemon.name}</S.Name>

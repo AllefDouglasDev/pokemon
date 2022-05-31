@@ -1,8 +1,17 @@
 import api from "..";
-import { ListPokemonsRequest, ListPokemonsResponse } from "./types";
+import {
+  GenderDto,
+  ListPokemonsRequest,
+  ListPokemonsResponse,
+  PokemonDto,
+  SpecialDetailsDto,
+} from "./types";
 
 const endpoints = {
   listPokemons: () => "/pokemon",
+  fetchPokemonById: (id: number) => `/pokemon/${id}`,
+  fetchPokemonSpecieDetailsById: (id: number) => `/pokemon-species/${id}`,
+  fetchGender: (rate: number | string) => `/gender/${rate}`,
 };
 
 const pokemonApi = api.injectEndpoints({
@@ -13,11 +22,20 @@ const pokemonApi = api.injectEndpoints({
         params,
       }),
     }),
-    fetchPokemonDetails: builder.query({
+    fetchPokemonDetailsById: builder.query<PokemonDto, number>({
+      query: (id) => ({ url: endpoints.fetchPokemonById(id) }),
+    }),
+    fetchPokemonDetailsByURL: builder.query<PokemonDto, string>({
       query: (url) => ({ url }),
     }),
-    fetchPokemonSpecieDetails: builder.query({
+    fetchPokemonSpecieDetailsById: builder.query<SpecialDetailsDto, number>({
+      query: (id) => ({ url: endpoints.fetchPokemonSpecieDetailsById(id) }),
+    }),
+    fetchPokemonSpecieDetailsByURL: builder.query<SpecialDetailsDto, string>({
       query: (url) => ({ url }),
+    }),
+    fetchGender: builder.query<GenderDto, number>({
+      query: (id) => ({ url: endpoints.fetchGender(id) }),
     }),
   }),
   overrideExisting: false,
@@ -25,10 +43,14 @@ const pokemonApi = api.injectEndpoints({
 
 export const {
   useListPokemonsQuery,
-  useFetchPokemonDetailsQuery,
-  useLazyFetchPokemonDetailsQuery,
-  useFetchPokemonSpecieDetailsQuery,
-  useLazyFetchPokemonSpecieDetailsQuery,
+  useFetchPokemonDetailsByIdQuery,
+  useFetchPokemonDetailsByURLQuery,
+  useLazyFetchPokemonDetailsByURLQuery,
+  useFetchPokemonSpecieDetailsByURLQuery,
+  useLazyFetchPokemonSpecieDetailsByURLQuery,
+  useFetchPokemonSpecieDetailsByIdQuery,
+  useLazyFetchPokemonSpecieDetailsByIdQuery,
+  useLazyFetchGenderQuery,
 } = pokemonApi;
 
 export default pokemonApi;

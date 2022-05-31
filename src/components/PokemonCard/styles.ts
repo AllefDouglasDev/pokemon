@@ -1,16 +1,13 @@
 import styled, { css } from "styled-components";
 import { tint, transparentize } from "polished";
+import { Link } from "react-router-dom";
+import { readableColor } from "../../utils/color";
 
 type WrapperProps = {
   color: string;
 };
 
-function readableColor(color: string) {
-  const lightColors = ["white", "yellow"];
-  return lightColors.includes(color) ? "black" : "white";
-}
-
-export const Wrapper = styled.div<WrapperProps>`
+export const Wrapper = styled(Link)<WrapperProps>`
   ${({ theme, color }) => css`
     position: relative;
 
@@ -20,8 +17,9 @@ export const Wrapper = styled.div<WrapperProps>`
     border-radius: ${theme.border.radius.medium};
 
     padding: ${theme.spacings.xsmall} ${theme.spacings.small};
-
     box-shadow: 0px 8px 15px rgba(48, 57, 67, 0.12);
+
+    text-decoration: none;
   `}
 `;
 
@@ -51,12 +49,10 @@ export const Name = styled.span<{ color: string }>`
 `;
 
 export const AbilityWrapper = styled.ul`
-  ${({ theme }) => css`
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  `}
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 `;
 
 export const Ability = styled.li<{ color: string }>`

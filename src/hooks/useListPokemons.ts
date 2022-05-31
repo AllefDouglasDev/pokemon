@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import {
-  useLazyFetchPokemonDetailsQuery,
+  useLazyFetchPokemonDetailsByURLQuery,
+  useLazyFetchPokemonSpecieDetailsByURLQuery,
   useListPokemonsQuery,
 } from "../api/pokemons";
 
@@ -19,8 +20,8 @@ export function useListPokemons(page: number) {
     limit: PER_PAGE,
     offset,
   });
-  const [fetchDetails] = useLazyFetchPokemonDetailsQuery();
-  const [fetchSpecieDetails] = useLazyFetchPokemonDetailsQuery();
+  const [fetchDetails] = useLazyFetchPokemonDetailsByURLQuery();
+  const [fetchSpecieDetails] = useLazyFetchPokemonSpecieDetailsByURLQuery();
 
   const loadPokemonDetails = useCallback(async (data: any[]) => {
     setLoading(true);
