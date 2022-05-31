@@ -10,7 +10,7 @@ export function useListPokemons(page: number) {
   const [loading, setLoading] = useState(false);
   const [pokemons, setPokemons] = useState<any[]>([]);
 
-  const offset = (page - 1) * PER_PAGE;
+  const offset = page * PER_PAGE;
   const {
     data,
     isLoading: isPokemonsLoading,

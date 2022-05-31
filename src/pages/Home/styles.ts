@@ -1,4 +1,6 @@
+import { lighten } from "polished";
 import styled, { css } from "styled-components";
+import LogoIcon from "../../assets/svgs/Logo";
 
 export const Container = styled.div`
   width: 100vw;
@@ -24,16 +26,48 @@ export const Title = styled.h1`
 `;
 
 export const PaginationWrapper = styled.div`
-  ul {
+  ${({ theme }) => css`
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-  }
+    justify-content: center;
+    width: 100%;
 
-  .selected {
-    background-color: red;
-    padding: 0.5rem;
-    color: white;
-  }
+    ul {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      margin: ${theme.spacings.medium} 0;
+      max-width: ${theme.sizes.pagination};
+      padding: ${theme.spacings.small};
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 2.7rem;
+      height: 2.7rem;
+      border: 1px solid ${theme.colors.primary};
+      border-radius: 50%;
+      background-color: ${theme.colors.primary};
+      color: ${theme.colors.white};
+    }
+
+    .selected {
+      padding: 0.5rem;
+      background-color: ${lighten(0.4, theme.colors.primary)};
+      border-color: ${lighten(0.4, theme.colors.primary)};
+      color: white;
+    }
+  `}
+`;
+
+export const LogoWrapper = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: center;
+    padding: ${theme.spacings.medium} 0 ${theme.spacings.xlarge};
+  `}
 `;

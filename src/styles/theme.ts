@@ -57,6 +57,7 @@ const theme = {
     header: "10.8rem",
     container: "150rem",
     profileImage: "4.7rem",
+    pagination: "37.5rem",
   },
   breakpoints: {
     mobile: "@media screen and (min-width: 10rem) and (max-width: 40rem)",
