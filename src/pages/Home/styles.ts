@@ -1,33 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
 `;
 
-export const Content = styled.div`
-  max-width: 70%;
-  padding: 20px;
-  h1 {
-    font-size: 1.5rem;
-  }
-`;
-
-export const Grid = styled.div`
+export const PokemonList = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
 
-export const Footer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 150px;
-  img {
-    padding: 10px;
-    width: 50%;
-  }
+export const Title = styled.h1`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.xlarge};
+    font-weight: ${theme.font.semibold};
+    color: ${theme.colors.black100};
+    padding: ${theme.spacings.xlarge} ${theme.spacings.medium};
+  `}
 `;
 
 export const PaginationWrapper = styled.div`

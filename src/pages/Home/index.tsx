@@ -10,7 +10,7 @@ import * as S from "./styles";
 export default function Home() {
   const [page, setPage] = useState(1);
 
-  const { pokemons, isLoading, pageCount } = useListPokemons(page);
+  const { pokemons, pageCount } = useListPokemons(page);
 
   const handlePageChange = (data: any) => {
     const newPage = data.selected || 1;
@@ -20,22 +20,17 @@ export default function Home() {
   return (
     <S.Container>
       <Menubar />
-      {isLoading && (
-        <span
-          style={{
-            fontSize: "20px",
-            fontWeight: "bold",
-          }}
-        >
-          Loading...
-        </span>
-      )}
 
-      <S.Grid>
+      <S.Title>
+        Qual pokémon você
+        <br /> escolheria?
+      </S.Title>
+
+      <S.PokemonList>
         {pokemons.map((pokemon) => (
           <PokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}
-      </S.Grid>
+      </S.PokemonList>
 
       <S.PaginationWrapper>
         <ReactPaginate

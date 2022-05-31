@@ -15,6 +15,7 @@ const theme = {
       "Inter, Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
     light: 300,
     normal: 400,
+    semibold: 600,
     bold: 800,
     sizes: {
       xlittle: "0.8rem",
@@ -33,10 +34,14 @@ const theme = {
     xsmall: "1rem",
     small: "1.7rem",
     medium: "2.2rem",
+    large: "3rem",
+    xlarge: "4rem",
   },
   colors: {
     primary: "#494949",
     black: "#000000",
+    black100: "#303943",
+    black200: "#212121",
     white: "#FFFFFF",
   },
   layers: {
