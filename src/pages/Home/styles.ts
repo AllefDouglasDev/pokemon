@@ -6,8 +6,12 @@ export const Container = styled.div`
 `;
 
 export const PokemonList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  ${({ theme }) => css`
+    display: flex;
+    flex-wrap: wrap;
+    gap: ${theme.spacings.small} ${theme.spacings.xsmall};
+    padding: 0 ${theme.spacings.small};
+  `}
 `;
 
 export const Title = styled.h1`

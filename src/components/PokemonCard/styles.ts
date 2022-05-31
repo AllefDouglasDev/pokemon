@@ -1,66 +1,89 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { tint, transparentize } from "polished";
 
-export const Container = styled.div`
-  max-width: 200px;
-  display: flex;
-  flex: 1 1 50px;
-  justify-content: space-between;
-  background-color: ${(props) => props.color};
+type WrapperProps = {
+  color: string;
+};
 
-  padding: 10px;
-  border-radius: 20px;
-  margin: 10px;
+function readableColor(color: string) {
+  const lightColors = ["white", "yellow"];
+  return lightColors.includes(color) ? "black" : "white";
+}
 
-  :hover {
-    opacity: 0.5;
-  }
-`;
-export const ContentLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ theme, color }) => css`
+    position: relative;
 
-  color: white;
-  padding: 10px;
-  max-width: 50%;
-`;
+    width: 16.5rem;
+    height: 12.5rem;
+    background-color: ${tint(0.2, color)};
+    border-radius: ${theme.border.radius.medium};
 
-export const ContentRight = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-top: 5px;
-  color: white;
-  max-width: 50%;
-  img {
-    max-width: 90%;
-  }
-  span {
-    opacity: 0.4;
-    color: black;
-  }
+    padding: ${theme.spacings.xsmall} ${theme.spacings.small};
+
+    box-shadow: 0px 8px 15px rgba(48, 57, 67, 0.12);
+  `}
 `;
 
-export const Habilitates = styled.div`
+export const Header = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: white;
-  opacity: 0.4;
-  border-radius: 10px;
-  border: 1px solid;
-  margin-top: 5px;
-  height: 25px;
+  justify-content: flex-end;
+`;
 
-  span {
+export const PokemonId = styled.span`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.xsmall};
+    font-weight: ${theme.font.bold};
+    color: ${theme.colors.black};
+    opacity: 0.3;
+  `}
+`;
+
+export const Name = styled.span<{ color: string }>`
+  ${({ theme, color }) => css`
+    font-size: ${theme.font.sizes.xsmall};
+    font-weight: ${theme.font.bold};
+    color: ${readableColor(color)};
+    text-transform: capitalize;
+    display: inline-block;
+    padding-bottom: ${theme.spacings.xsmall};
+  `}
+`;
+
+export const AbilityWrapper = styled.ul`
+  ${({ theme }) => css`
+    list-style: none;
     display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-left: 5px;
-    margin-right: 5px;
-    color: black;
-    font-size: 0.8rem;
-  }
+    flex-direction: column;
+    gap: 0.6rem;
+  `}
+`;
+
+export const Ability = styled.li<{ color: string }>`
+  ${({ theme, color }) => css`
+    padding: ${theme.spacings.xxsmall} ${theme.spacings.xsmall};
+    background-color: ${transparentize(0.8, theme.colors.white)};
+    width: fit-content;
+    border-radius: ${theme.border.radius.medium};
+    min-width: 4.5rem;
+    text-align: center;
+
+    span {
+      color: ${readableColor(color)};
+      font-size: ${theme.font.sizes.xlittle};
+      text-transform: capitalize;
+    }
+  `}
+`;
+
+export const Image = styled.img`
+  ${({ theme }) => css`
+    position: absolute;
+    width: 9rem;
+    height: 7rem;
+    object-fit: contain;
+
+    right: 0;
+    bottom: ${theme.spacings.xsmall};
+  `}
 `;

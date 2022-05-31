@@ -42,7 +42,7 @@ export const Profile = styled.div`
     display: flex;
     align-items: center;
     padding-right: ${theme.spacings.xsmall};
-    padding-bottom: ${theme.spacings.xxsmall};
+    padding-bottom: ${theme.spacings.xxxsmall};
   `}
 `;
 

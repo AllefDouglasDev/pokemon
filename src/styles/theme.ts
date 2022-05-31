@@ -30,7 +30,8 @@ const theme = {
     },
   },
   spacings: {
-    xxsmall: "0.4rem",
+    xxxsmall: "0.4rem",
+    xxsmall: "0.6rem",
     xsmall: "1rem",
     small: "1.7rem",
     medium: "2.2rem",
@@ -43,6 +44,7 @@ const theme = {
     black100: "#303943",
     black200: "#212121",
     white: "#FFFFFF",
+    background: "#E5E5E5",
   },
   layers: {
     base: 10,
